@@ -1,4 +1,3 @@
-import os
 import requests
 import bs4
 import telebot
@@ -54,8 +53,7 @@ displaytelegram = h1[0].getText()+"\n"+"\n" + Batch[0].getText()+ "\n"+ctc[2].ge
 # -----------
 
 
-my_secret = os.environ['API_KEY']
-bot = telebot.TeleBot(my_secret)
+bot = telebot.TeleBot("1742051172:AAEI7Mv-5oYeMpGTfMOE-vkTeeEK2TppByU")
 
 @bot.message_handler(commands=['1'])
 def greet1(message1):
