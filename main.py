@@ -2,7 +2,7 @@ import requests
 import bs4
 import telebot
 
-bot = telebot.TeleBot("1742051172:AAEI7Mv-5oYeMpGTfMOE-vkTeeEK2TppByU")
+bot = telebot.TeleBot("1866658555:AAG4WdgzUVE3o0pwaE4r2JZEiY99i5Unul4")
 
 @bot.message_handler(commands=[''])
 def greet1(message1):
