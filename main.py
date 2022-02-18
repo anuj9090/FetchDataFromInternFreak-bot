@@ -1,6 +1,8 @@
 import requests
 import bs4
 import telebot
+from time import sleep
+
 
 bot = telebot.TeleBot("1866658555:AAG4WdgzUVE3o0pwaE4r2JZEiY99i5Unul4")
 
@@ -21,13 +23,16 @@ def greet1(message1):
   soup2 = bs4.BeautifulSoup(res2.text, 'lxml')
   ctc = soup2.select('h5')
   ctc_number = soup2.select('p')
-  displaytelegram = h1[0].getText()+"\n"+"\n" + Batch[0].getText()+ "\n"+ctc[2].getText() +" "+ctc_number[3].getText()+"\n"+"\n" +"Know More: "+ url
+  displaytelegram = h1[0].getText()+"\n"+"\n"+ Batch[0].getText()+ "\n"+ctc[2].getText() +" "+ctc_number[3].getText()+"\n"+"\n" +"Know More: "+ url
+  displaylinkdin  = h1[0].getText()+"\n"+ Batch[0].getText()+ "\n"+ctc[2].getText() +" "+ctc_number[3].getText()+"\n"+"\n" +"Know More: "+ url
   # -----------
-
   linkedinKaMaal ="\n"+"\n"+"Join Discussion group for any doubts. ( https://t.me/chatter007)"+"\n"+"\n"+"Join the telegram channel to get the latest updates fast: https://bit.ly/3xlNvT0" + "\n"+"\n"+"Follow our page for more updates and do like/share the post to reach those who might be interested."+"\n"
   hastags="\n"+"#like #recruiting #softwareengineer #careers #boeing #helpinghands #fresher #hiring #jobs #recruitment #jobsearch #internship #jobhunt2021 #intern2021 #job #internship #international #studygram #employment #engineering #engineer #jobs #vacancy #staysafe #instagood #intern #india #millennials #postoftheday #post #professional #technology #tech #students #poster #awareness #lifestyle #developer #softwaredeveloper #enterpreneur #sony #viralpost #viral #hustlers #acies #faang #amazon #google #facebook #netflix #apple #dxctechnology #texasinstruments #adobe #adobehiring #dropbox #googlehiring #amazingcompany #educational #tcs #facebookads #comment #highpayingjobs #amount"
 
-  bot.send_message(message1.chat.id, displaytelegram+linkedinKaMaal+hastags)
+  bot.send_message(message1.chat.id, displaytelegram)
+  sleep(3)   
+  bot.send_message(message1.chat.id, displaylinkdin+linkedinKaMaal+hastags)
+
 
 
 @bot.message_handler(commands=['2'])
