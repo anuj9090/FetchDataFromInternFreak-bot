@@ -30,7 +30,7 @@ def greet1(message1):
   hastags="\n"+"#like #recruiting #softwareengineer #careers #boeing #helpinghands #fresher #hiring #jobs #recruitment #jobsearch #internship #jobhunt2021 #intern2021 #job #internship #international #studygram #employment #engineering #engineer #jobs #vacancy #staysafe #instagood #intern #india #millennials #postoftheday #post #professional #technology #tech #students #poster #awareness #lifestyle #developer #softwaredeveloper #enterpreneur #sony #viralpost #viral #hustlers #acies #faang #amazon #google #facebook #netflix #apple #dxctechnology #texasinstruments #adobe #adobehiring #dropbox #googlehiring #amazingcompany #educational #tcs #facebookads #comment #highpayingjobs #amount"
 
   bot.send_message(message1.chat.id, displaytelegram)
-  sleep(3)   
+  sleep(4)   
   bot.send_message(message1.chat.id, displaylinkdin+linkedinKaMaal+hastags)
 
 
