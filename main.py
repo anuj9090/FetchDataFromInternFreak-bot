@@ -8,7 +8,7 @@ bot = telebot.TeleBot("1866658555:AAG4WdgzUVE3o0pwaE4r2JZEiY99i5Unul4")
 
 @bot.message_handler(commands=[''])
 def gree(msg):
-  print(msg)
+#   print(msg)
   markup = types.ReplyKeyboardMarkup(row_width=3)
   itembtn1 = types.KeyboardButton('/Show_latest_post')
   itembtn2 = types.KeyboardButton('/Show_recently_added_posts')
