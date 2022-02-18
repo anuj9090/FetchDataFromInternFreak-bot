@@ -2,15 +2,24 @@ import requests
 import bs4
 import telebot
 from time import sleep
+from telebot import types
 
-
-bot = telebot.TeleBot("1866658555:AAG4WdgzUVE3o0pwaE4r2JZEiY99i5Unul5")
+bot = telebot.TeleBot("1866658555:AAG4WdgzUVE3o0pwaE4r2JZEiY99i5Unul4")
 
 @bot.message_handler(commands=[''])
+def gree(msg):
+  print(msg)
+  markup = types.ReplyKeyboardMarkup(row_width=3)
+  itembtn1 = types.KeyboardButton('/Show_latest_post')
+  itembtn2 = types.KeyboardButton('/Show_recently_added_posts')
+  itembtn4 = types.KeyboardButton('/')
+  markup.add(itembtn1, itembtn2, itembtn4)
+  bot.send_message(msg.chat.id, "Hi "+ msg.chat.first_name +",\nIt's the InternFreak bot and here's what I can do.😀", reply_markup=markup)
+
+@bot.message_handler(commands=['Show_latest_post'])
 def greet1(message1):
   res = requests.get('https://internfreak.co/jobs-and-internship-opportunities?page=1&limit=15')
   soup = bs4.BeautifulSoup(res.text, 'lxml')
-  
   h1 = soup.select('.post-entry .heading a')
   Batch = soup.select('p')
  
@@ -33,9 +42,7 @@ def greet1(message1):
   sleep(4)   
   bot.send_message(message1.chat.id, displaylinkdin+linkedinKaMaal+hastags)
 
-
-
-@bot.message_handler(commands=['2'])
+@bot.message_handler(commands=['Show_recently_added_posts'])
 
 def greet(message):
   res = requests.get('https://internfreak.co/jobs-and-internship-opportunities?page=1&limit=15')
@@ -66,7 +73,6 @@ def greet(message):
   
   displaylinkedin = Content1 + Main + Content2 
   bot.send_message(message.chat.id, displaylinkedin)
-
 
 bot.polling()
 
