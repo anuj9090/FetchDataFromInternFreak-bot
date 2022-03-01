@@ -12,7 +12,7 @@ def gree(msg):
   markup = types.ReplyKeyboardMarkup(row_width=3)
   itembtn1 = types.KeyboardButton('/Show_latest_post')
   itembtn2 = types.KeyboardButton('/Show_recently_added_posts')
-  itembtn4 = types.KeyboardButton('/')
+  itembtn4 = types.KeyboardButton('/start')
   markup.add(itembtn1, itembtn2, itembtn4)
   bot.send_message(msg.chat.id, "Hi "+ msg.chat.first_name +",\nIt's the InternFreak bot and here's what I can do.😀", reply_markup=markup)
 
