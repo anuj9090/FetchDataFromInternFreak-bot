@@ -1,6 +1,7 @@
 import requests
 import bs4
 import telebot
+import random
 from time import sleep
 from telebot import types
 
@@ -9,11 +10,13 @@ bot = telebot.TeleBot("1866658555:AAG4WdgzUVE3o0pwaE4r2JZEiY99i5Unul5")
 @bot.message_handler(commands=['start'])
 def gree(msg):
 #   print(msg)
-  markup = types.ReplyKeyboardMarkup(row_width=3)
+  markup = types.ReplyKeyboardMarkup(row_width=2)
   itembtn1 = types.KeyboardButton('/Show_latest_post')
   itembtn2 = types.KeyboardButton('/Show_recently_added_posts')
   itembtn4 = types.KeyboardButton('/start')
-  markup.add(itembtn1, itembtn2, itembtn4)
+  itembtn5 = types.KeyboardButton('/Toss_A_Coin')
+
+  markup.add(itembtn1, itembtn2, itembtn4, itembtn5)
   bot.send_message(msg.chat.id, "Hi "+ msg.chat.first_name +",\nIt's the InternFreak bot and here's what I can do.😀", reply_markup=markup)
 
 @bot.message_handler(commands=['Show_latest_post'])
@@ -73,6 +76,12 @@ def greet(message):
   
   displaylinkedin = Content1 + Main + Content2 
   bot.send_message(message.chat.id, displaylinkedin)
+
+@bot.message_handler(commands=['Toss_A_Coin'])
+def Toss_A_Coin(msg):
+#   print(msg)
+  list1 = ["It's Tail","It's Head"]
+  bot.send_message(msg.chat.id, random.choice(list1))
 
 bot.polling()
 
