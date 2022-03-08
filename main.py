@@ -9,7 +9,7 @@ from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
 
-bot = telebot.TeleBot("1866658555:AAG4WdgzUVE3o0pwaE4r2JZEiY99i5Unul5")
+bot = telebot.TeleBot("1866658555:AAG4WdgzUVE3o0pwaE4r2JZEiY99i5Unul4")
 
 @bot.message_handler(commands=['start'])
 def gree(msg):
@@ -124,11 +124,11 @@ def greet1(message1):
 
   files={'photo':open('./car2.png','rb')}
 
-
-  requests.post('https://api.telegram.org/bot5264710334:AAEps7iVEkVXSLmrC-aWBeoZKnf-QTb8v78/sendPhoto?chat_id=568861307',files=files)
+  # print(message1)
+  requests.post('https://api.telegram.org/bot1866658555:AAG4WdgzUVE3o0pwaE4r2JZEiY99i5Unul4/sendPhoto?chat_id=568861307',files=files)
 
   bot.send_message(message1.chat.id, displaytelegram)
-  sleep(5)
+  sleep(7)
   bot.send_message(message1.chat.id, displaylinkdin+linkedinKaMaal+hastags)
 
 @bot.message_handler(commands=['Show_recently_added_posts'])
