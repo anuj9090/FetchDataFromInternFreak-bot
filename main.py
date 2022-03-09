@@ -9,8 +9,7 @@ from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
 
-bot = telebot.TeleBot("1866658555:AAG4WdgzUVE3o0pwaE4r2JZEiY99i5Unul5")
-
+bot = telebot.TeleBot("1866658555:AAG4WdgzUVE3o0pwaE4r2JZEiY99i5Unul4")
 @bot.message_handler(commands=['start'])
 def gree(msg):
 #   print(msg)
@@ -66,14 +65,14 @@ def greet1(message1):
   img = Image.open('./template.png')
 
   # Call draw Method to add 2D graphics in an image
-
+  space=" "
 
   I1 = ImageDraw.Draw(img)
     # Custom font style and font size
   myFont = ImageFont.truetype('./OpenSans-ExtraBold.ttf', 40)
     # Add Text to an image
-  I1.text((500, 485), urlImgSlice[end+51:-12], font=myFont, fill=(0, 0, 0))
-  I1.text((500, 545), " Is Hiring  !", font=myFont, fill=(0, 0, 0))
+  I1.text((500, 485), urlImgSlice[end+51:-12]+space+"Is", font=myFont, fill=(0, 0, 0))
+  I1.text((570, 545), "Hiring  !", font=myFont, fill=(0, 0, 0))
   
 
   I2 = ImageDraw.Draw(img)  
@@ -97,7 +96,7 @@ def greet1(message1):
       I2.text((550, 720), location,font=myFont, fill=(47, 92, 130))
       I2.text((470, 780), locationName,font=myFont, fill=(47, 92, 130))
     else:
-      I2.text((480, 720), location+locationName,font=myFont, fill=(47, 92, 130))
+      I2.text((480, 720), location+space+locationName,font=myFont, fill=(47, 92, 130))
    
 
 
