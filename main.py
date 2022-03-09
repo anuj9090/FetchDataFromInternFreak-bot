@@ -10,7 +10,7 @@ from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
 
-my_secret = os.environ['BotKey']
+my_secret = os.environ.get('BotKey')
 bot = telebot.TeleBot(my_secret )
 
 @bot.message_handler(commands=['start'])
