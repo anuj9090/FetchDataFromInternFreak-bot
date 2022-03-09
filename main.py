@@ -1,3 +1,4 @@
+import os
 import requests
 import bs4
 import telebot
@@ -9,7 +10,9 @@ from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
 
-bot = telebot.TeleBot("1866658555:AAG4WdgzUVE3o0pwaE4r2JZEiY99i5Unul4")
+my_secret = os.environ['BotKey']
+bot = telebot.TeleBot(my_secret )
+
 @bot.message_handler(commands=['start'])
 def gree(msg):
 #   print(msg)
