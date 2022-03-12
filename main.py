@@ -39,7 +39,7 @@ def greet1(message1):
   
   res2 = requests.get(url)
   soup2 = bs4.BeautifulSoup(res2.text, 'lxml')
-  # designation = soup2.select('p')[1].getText()
+  designation = soup2.select('p')[1].getText()
   location= soup2.select('h5')[3].getText()
   locationName=soup2.select('p')[5].getText()
 
@@ -74,9 +74,32 @@ def greet1(message1):
     # Custom font style and font size
   myFont = ImageFont.truetype('./OpenSans-ExtraBold.ttf', 40)
     # Add Text to an image
-  I1.text((500, 485), urlImgSlice[end+51:-12]+space+"Is", font=myFont, fill=(0, 0, 0))
-  I1.text((570, 545), "Hiring  !", font=myFont, fill=(0, 0, 0))
+  designation_length = len(designation.split())
+
+
   
+  if len(urlImgSlice[end+51:-12].split())>1 :
+    I1.text((500, 485),urlImgSlice[end+51:-12] +space+"Is", font=myFont, fill=(0, 0, 0))
+    I1.text((570, 545), "Hiring  !", font=myFont, fill=(0, 0, 0))
+  else:
+    if designation_length ==1 :
+          
+      I1.text((500, 485),urlImgSlice[end+51:-12] +space+"Is Hiring !", font=myFont, fill=(0, 0, 0))
+      I1.text((570, 545),   designation , font=myFont, fill=(0, 0, 0))
+    if designation_length ==2 :
+          
+      I1.text((500, 485),urlImgSlice[end+51:-12]  +space+"Is Hiring !", font=myFont, fill=(0, 0, 0))
+      I1.text((500, 545),   designation , font=myFont, fill=(0, 0, 0))
+    if designation_length ==3 :  
+    
+      I1.text((480, 425),urlImgSlice[end+51:-12]  +space+"Is Hiring !", font=myFont, fill=(0, 0, 0))
+      I1.text((480, 485),   designation.split()[0]+space+designation.split()[1], font=myFont, fill=(0, 0, 0))
+      I1.text((580, 545),   designation.split()[2] , font=myFont, fill=(0, 0, 0))
+
+
+  
+
+
 
   I2 = ImageDraw.Draw(img)  
 # Custom font style and font size
