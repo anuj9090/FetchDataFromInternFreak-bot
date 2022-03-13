@@ -83,7 +83,6 @@ def greet1(message1):
     I1.text((570, 545), "Hiring  !", font=myFont, fill=(0, 0, 0))
   else:
     if designation_length ==1 :
-          
       I1.text((500, 485),urlImgSlice[end+51:-12] +space+"Is Hiring !", font=myFont, fill=(0, 0, 0))
       I1.text((570, 545),   designation , font=myFont, fill=(0, 0, 0))
     if designation_length ==2 :
@@ -147,12 +146,12 @@ def greet1(message1):
 
   img.save("./car2.png")
 
-  files={'photo':open('./car2.png','rb')}
+  # files={'photo':open('./car2.png','rb')}
 
-  # print(message1)
-  requests.post('https://api.telegram.org/bot1866658555:AAG4WdgzUVE3o0pwaE4r2JZEiY99i5Unul4/sendPhoto?chat_id=568861307',files=files)
-
-  bot.send_message(message1.chat.id, displaytelegram)
+  # requests.post('https://api.telegram.org/bot1866658555:AAG4WdgzUVE3o0pwaE4r2JZEiY99i5Unul4/sendPhoto?chat_id=568861307',files=files)
+  
+  # bot.send_message(message1.chat.id, displaytelegram)
+  bot.send_photo(message1.chat.id, caption=displaytelegram,photo=open('./car2.png', 'rb'))
   sleep(7)
   bot.send_message(message1.chat.id, displaylinkdin+linkedinKaMaal+hastags)
 
@@ -194,31 +193,6 @@ def Toss_A_Coin(msg):
 #   print(msg)
   list1 = ["It's Tail","It's Head"]
   bot.send_message(msg.chat.id, random.choice(list1))
-
-
-
-# @bot.message_handler(commands=['canva'])
-# def canva(msg):
-  # print(msg)
-
-  # Open an Image
-
-  # img = Image.open('./photo_2022-03-05_11-05-32.jpg')
-
-  # Call draw Method to add 2D graphics in an image
-  # I1 = ImageDraw.Draw(img)
-  # print("hogya")
-
-    # Add Text to an image
-  # I1.text((28, 36), "nice Car", fill=(255, 0, 0))
-   
-  # Save the edited image
-  # img.save("./car2.png")
-  # files={'photo':open('./car2.png','rb')}
-
-
-  # requests.post('https://api.telegram.org/bot5264710334:AAEps7iVEkVXSLmrC-aWBeoZKnf-QTb8v78/sendPhoto?chat_id=568861307',files=files)
-
 
 
 
