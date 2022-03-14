@@ -95,6 +95,12 @@ def greet1(message1):
       I1.text((480, 485),   designation.split()[0]+space+designation.split()[1], font=myFont, fill=(0, 0, 0))
       I1.text((580, 545),   designation.split()[2] , font=myFont, fill=(0, 0, 0))
 
+    if designation_length ==4 :  
+    
+      I1.text((480, 425),urlImgSlice[end+51:-12]  +space+"Is Hiring !", font=myFont, fill=(0, 0, 0))
+      I1.text((480, 485),   designation.split()[0]+space+designation.split()[1], font=myFont, fill=(0, 0, 0))
+      I1.text((480, 545),   designation.split()[2]+space+designation.split()[3] , font=myFont, fill=(0, 0, 0))      
+
 
   
 
