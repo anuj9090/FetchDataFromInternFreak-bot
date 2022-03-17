@@ -9,6 +9,8 @@ import urllib.request
 from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
+import re
+
 
 my_secret = os.environ.get('BotKey')
 bot = telebot.TeleBot(my_secret )
@@ -100,20 +102,15 @@ def greet1(message1):
       I1.text((480, 425),urlImgSlice[end+51:-12]  +space+"Is Hiring ", font=myFont, fill=(0, 0, 0))
       I1.text((480, 485),   designation.split()[0]+space+designation.split()[1], font=myFont, fill=(0, 0, 0))
       I1.text((480, 545),   designation.split()[2]+space+designation.split()[3] , font=myFont, fill=(0, 0, 0))      
-
-
   
-
-
-
   I2 = ImageDraw.Draw(img)  
 # Custom font style and font size
 
   myFont = ImageFont.truetype('./OpenSans-ExtraBold.ttf', 30)
     # Add Text to an image
-
-
-  if ',' in Batch[0].getText():  
+  batch_length = len(re.findall(r'\w+', Batch[0].getText()))
+  
+  if batch_length >=4:  
 
     if ',' in locationName:
       I2.text((550, 790), location,font=myFont, fill=(47, 92, 130))
@@ -129,24 +126,29 @@ def greet1(message1):
     else:
       I2.text((480, 720), location+space+locationName,font=myFont, fill=(47, 92, 130))
    
-
-
   I3 = ImageDraw.Draw(img)  
 # Custom font style and font size
   myFont = ImageFont.truetype('./OpenSans-ExtraBold.ttf', 30)
-
   
-  if ',' in Batch[0].getText():
-    I3.text((580, 650), Batch[0].getText()[:7],font=myFont, fill=(47, 92, 130))
-    I3.text((500, 700), Batch[0].getText()[7:],font=myFont, fill=(47, 92, 130))
+  
+  if 'Batch' in Batch[0].getText():
+    
+    if batch_length ==2:
+      I3.text((530, 650), Batch[0].getText(), font=myFont, fill=(47, 92, 130))
+    if batch_length ==3:
+      I3.text((530, 650), Batch[0].getText(), font=myFont, fill=(47, 92, 130))
+    if batch_length ==4:
+      I3.text((580, 650), Batch[0].getText()[:7],font=myFont, fill=(47, 92, 130))
+      I3.text((500, 700), Batch[0].getText()[7:],font=myFont, fill=(47, 92, 130))  
+    if batch_length ==5:
+      I3.text((580, 650), Batch[0].getText()[:7],font=myFont, fill=(47, 92, 130))
+      I3.text((500, 700), Batch[0].getText()[7:],font=myFont, fill=(47, 92, 130)) 
+      
   else:
     I3.text((530, 650), Batch[0].getText(), font=myFont, fill=(47, 92, 130))
 
   # Add Text to an image
-
   # Save the edited image
-
-  
   
   img.paste(img2, (0,200), mask = img2)
 
@@ -155,8 +157,7 @@ def greet1(message1):
   # files={'photo':open('./car2.png','rb')}
 
   # requests.post('https://api.telegram.org/bot1866658555:AAG4WdgzUVE3o0pwaE4r2JZEiY99i5Unul4/sendPhoto?chat_id=568861307',files=files)
-  
-  # bot.send_message(message1.chat.id, displaytelegram)
+    
   bot.send_photo(message1.chat.id, caption=displaytelegram,photo=open('./car2.png', 'rb'))
   sleep(7)
   bot.send_message(message1.chat.id, displaylinkdin+linkedinKaMaal+hastags)
