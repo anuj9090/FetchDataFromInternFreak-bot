@@ -52,7 +52,6 @@ def greet1(message1):
   # -----------
   linkedinKaMaal ="\n"+"\n"+"Join The Telegram Channel To Get The Latest Updates: https://bit.ly/3xlNvT0" + "\n"+"\n"+"Follow our page for more updates and do like/share the post to reach those who might be interested."+"\n"
   hastags="\n"+"#like #recruiting #softwareengineer #careers #boeing #helpinghands #fresher #hiring #jobs #recruitment #jobsearch #internship #jobhunt2021 #intern2021 #job #internship #international #studygram #employment #engineering #engineer #jobs #vacancy #staysafe #instagood #intern #india #millennials #postoftheday #post #professional #technology #tech #students #poster #awareness #lifestyle #developer #softwaredeveloper #enterpreneur #sony #viralpost #viral #hustlers #acies #faang #amazon #google #facebook #netflix #apple #dxctechnology #texasinstruments #adobe #adobehiring #dropbox #googlehiring #amazingcompany #educational #tcs #facebookads #comment #highpayingjobs #amount"
-
   
   urlImgSlice=str(soup.find_all('a')[5])
 
@@ -77,7 +76,6 @@ def greet1(message1):
     # Add Text to an image
   designation_length = len(designation.split())
 
-
   
   if len(urlImgSlice[end+51:-12].split())>1 :
     I1.text((500, 485),urlImgSlice[end+51:-12] +space+"Is", font=myFont, fill=(0, 0, 0))
@@ -100,7 +98,13 @@ def greet1(message1):
     
       I1.text((480, 425),urlImgSlice[end+51:-12]  +space+"Is Hiring ", font=myFont, fill=(0, 0, 0))
       I1.text((480, 485),   designation.split()[0]+space+designation.split()[1], font=myFont, fill=(0, 0, 0))
-      I1.text((480, 545),   designation.split()[2]+space+designation.split()[3] , font=myFont, fill=(0, 0, 0))      
+      I1.text((480, 545),   designation.split()[2]+space+designation.split()[3] , font=myFont, fill=(0, 0, 0))  
+      
+    if designation_length ==5 :  
+    
+      I1.text((480, 425),urlImgSlice[end+51:-12]  +space+"Is Hiring ", font=myFont, fill=(0, 0, 0))
+      I1.text((480, 485),   designation.split()[0]+space+designation.split()[1], font=myFont, fill=(0, 0, 0))
+      I1.text((480, 545),   designation.split()[2]+space+designation.split()[3]+designation.split()[4] , font=myFont, fill=(0, 0, 0))        
   
   I2 = ImageDraw.Draw(img)  
 # Custom font style and font size
