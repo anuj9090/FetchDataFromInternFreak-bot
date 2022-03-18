@@ -69,7 +69,6 @@ def greet1(message1):
 
   img = Image.open('./template.png')
 
-  # Call draw Method to add 2D graphics in an image
   space=" "
 
   I1 = ImageDraw.Draw(img)
@@ -105,25 +104,37 @@ def greet1(message1):
   
   I2 = ImageDraw.Draw(img)  
 # Custom font style and font size
-
   myFont = ImageFont.truetype('./OpenSans-ExtraBold.ttf', 30)
     # Add Text to an image
   batch_length = len(re.findall(r'\w+', Batch[0].getText()))
+  locationName_length = len(re.findall(r'\w+', locationName))
   
   if batch_length >=4:  
-
-    if ',' in locationName:
+    
+    if locationName_length==4:
+      I2.text((550, 790), location,font=myFont, fill=(47, 92, 130))
+      I2.text((425, 840), locationName,font=myFont, fill=(47, 92, 130))
+    if locationName_length==3:
       I2.text((550, 790), location,font=myFont, fill=(47, 92, 130))
       I2.text((470, 840), locationName,font=myFont, fill=(47, 92, 130))
-    else:
+    if locationName_length==2:
       I2.text((550, 790), location,font=myFont, fill=(47, 92, 130))
-      I2.text((550, 840), locationName,font=myFont, fill=(47, 92, 130))
+      I2.text((510, 840), locationName,font=myFont, fill=(47, 92, 130))  
+    if locationName_length==1:
+      I2.text((480, 790), location+space+locationName,font=myFont, fill=(47, 92, 130))
 
   else:
-    if ',' in locationName:
+    
+    if locationName_length==4:
+      I2.text((550, 720), location,font=myFont, fill=(47, 92, 130))
+      I2.text((425, 780), locationName,font=myFont, fill=(47, 92, 130))    
+    if locationName_length==3:
       I2.text((550, 720), location,font=myFont, fill=(47, 92, 130))
       I2.text((470, 780), locationName,font=myFont, fill=(47, 92, 130))
-    else:
+    if locationName_length==2:
+      I2.text((550, 720), location,font=myFont, fill=(47, 92, 130))
+      I2.text((510, 780), locationName,font=myFont, fill=(47, 92, 130))       
+    if locationName_length==1:
       I2.text((480, 720), location+space+locationName,font=myFont, fill=(47, 92, 130))
    
   I3 = ImageDraw.Draw(img)  
