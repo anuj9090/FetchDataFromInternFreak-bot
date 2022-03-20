@@ -130,7 +130,7 @@ def greet1(message1):
     
     if locationName_length==4:
       I2.text((550, 720), location,font=myFont, fill=(47, 92, 130))
-      I2.text((425, 780), locationName,font=myFont, fill=(47, 92, 130))    
+      I2.text((455, 780), locationName,font=myFont, fill=(47, 92, 130))    
     if locationName_length==3:
       I2.text((550, 720), location,font=myFont, fill=(47, 92, 130))
       I2.text((470, 780), locationName,font=myFont, fill=(47, 92, 130))
