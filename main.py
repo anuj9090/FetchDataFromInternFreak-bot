@@ -74,7 +74,7 @@ def greet1(message1):
     # Custom font style and font size
   myFont = ImageFont.truetype('./OpenSans-ExtraBold.ttf', 40)
     # Add Text to an image
-  designation_length = len(re.findall(r'\w+', designation))
+  designation_length = len(designation.split())
 
   if len(urlImgSlice[end+51:-12].split())>1 :
     I1.text((500, 485),urlImgSlice[end+51:-12] +space+"Is", font=myFont, fill=(0, 0, 0))
@@ -103,7 +103,7 @@ def greet1(message1):
     
       I1.text((480, 425),urlImgSlice[end+51:-12]  +space+"Is Hiring ", font=myFont, fill=(0, 0, 0))
       I1.text((480, 485),   designation.split()[0]+space+designation.split()[1], font=myFont, fill=(0, 0, 0))
-      I1.text((480, 545),   designation.split()[2]+space+designation.split()[3]+designation.split()[4] , font=myFont, fill=(0, 0, 0))        
+      I1.text((480, 545),   designation.split()[2]+space+designation.split()[3]+space+designation.split()[4] , font=myFont, fill=(0, 0, 0))        
   
   I2 = ImageDraw.Draw(img)  
 # Custom font style and font size
