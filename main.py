@@ -79,6 +79,10 @@ def greet1(message1):
   if len(urlImgSlice[end+51:-12].split())>1 :
     I1.text((500, 485),urlImgSlice[end+51:-12] +space+"Is", font=myFont, fill=(0, 0, 0))
     I1.text((570, 545), "Hiring  !", font=myFont, fill=(0, 0, 0))
+    
+  elif len(urlImgSlice[end+51:-12].split())==1 and len(urlImgSlice[end+51:-12])<6 :
+    I1.text((500, 545),urlImgSlice[end+51:-12] +space+"Is"+space+"Hiring !", font=myFont, fill=(0, 0, 0))
+       
   else:
     if designation_length ==1 :
       I1.text((500, 485),urlImgSlice[end+51:-12] +space+"Is Hiring ", font=myFont, fill=(0, 0, 0))
