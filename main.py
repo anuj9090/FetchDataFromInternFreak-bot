@@ -13,7 +13,6 @@ import re
 import bitly_api
 import json
 
-my_secret2 = os.environ.get('BITLY_ACCESS_TOKEN')
 my_secret = os.environ.get('BotKey')
 bot = telebot.TeleBot(my_secret )
 space=" "
@@ -28,7 +27,7 @@ def gree(msg):
   itembtn5 = types.KeyboardButton('/Toss_A_Coin')
 
   markup.add(itembtn1, itembtn2, itembtn4, itembtn5)
-  bot.send_message(msg.chat.id, "Hi "+ msg.chat.first_name +"\nIt's the InternFreak bot and here's what I can do.😀", reply_markup=markup)
+  bot.send_message(msg.chat.id, "Hi "+ msg.chat.first_name +"\nIt's the InternFreak bot and here's what I can do. 😀 ", reply_markup=markup)
 
 @bot.message_handler(commands=['Show_latest_post'])
 def greet1(message1):
@@ -191,7 +190,7 @@ def greet(message):
   
   h1 = soup.select('.post-entry .heading a')
   Batch = soup.select('p')
-  Category = soup.select('.post-entry .post-meta .category')
+  # Category = soup.select('.post-entry .post-meta .category')
 
   count = 0
   serial = 1
@@ -201,7 +200,7 @@ def greet(message):
   while (count < 8):   
       a= str(serial) +". "+space+ h1[count].getText()
       b= Batch[count].getText()
-      c= Category[count].getText()
+      # c= Category[count].getText()
       d= 3*url_a
     
       printop =soup.find_all('a')[d]
@@ -209,8 +208,11 @@ def greet(message):
       end = len(lamba)-len(h1[count].getText())-6
       long_url='https://internfreak.co/'+lamba[9:end]
 
+    
+      my_secret2 = os.environ.get('BITLY_ACCESS_TOKEN')
       bcc = bitly_api.Connection(access_token = my_secret2)
 
+    
       #bit.ly url shortener
       response = bcc.shorten(long_url)
       s1 = json.dumps(response)
