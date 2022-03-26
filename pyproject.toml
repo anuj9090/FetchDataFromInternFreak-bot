@@ -10,6 +10,7 @@ numpy = "^1.22.2"
 bs4 = "^0.0.1"
 pyTelegramBotAPI = "^4.4.0"
 requests = "^2.27.1"
+bitly_api = "^0.3"
 
 [tool.poetry.dev-dependencies]
 

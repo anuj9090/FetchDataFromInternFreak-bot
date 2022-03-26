@@ -10,10 +10,13 @@ from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
 import re
+import bitly_api
+import json
 
-
+my_secret2 = os.environ['BITLY_ACCESS_TOKEN']
 my_secret = os.environ.get('BotKey')
 bot = telebot.TeleBot(my_secret )
+space=" "
 
 @bot.message_handler(commands=['start'])
 def gree(msg):
@@ -68,7 +71,6 @@ def greet1(message1):
 
   img = Image.open('./template.png')
 
-  space=" "
 
   I1 = ImageDraw.Draw(img)
     # Custom font style and font size
@@ -166,9 +168,10 @@ def greet1(message1):
     I3.text((530, 650), Batch[0].getText(), font=myFont, fill=(47, 92, 130))
 
   # Add Text to an image
-  # Save the edited image
   
   img.paste(img2, (0,200), mask = img2)
+  # Save the edited image
+
 
   img.save("./car2.png")
 
@@ -189,38 +192,52 @@ def greet(message):
   h1 = soup.select('.post-entry .heading a')
   Batch = soup.select('p')
   Category = soup.select('.post-entry .post-meta .category')
-  
+
   count = 0
   serial = 1
+  url_a = 2
   my_list = []
   
   while (count < 8):   
-      a= str(serial) +". "+ h1[count].getText()
+      a= str(serial) +". "+space+ h1[count].getText()
       b= Batch[count].getText()
       c= Category[count].getText()
-      
-      n=a+'\n'+b +'\n'+'#'+c+'\n'
+      d= 3*url_a
+    
+      printop =soup.find_all('a')[d]
+      lamba = str(printop)
+      end = len(lamba)-len(h1[count].getText())-6
+      long_url='https://internfreak.co/'+lamba[9:end]
+
+      bcc = bitly_api.Connection(access_token = my_secret2)
+
+      #bit.ly url shortener
+      response = bcc.shorten(long_url)
+      s1 = json.dumps(response)
+      y = json.loads(s1)
+      short_url = y["url"]
+
+       
+      n=a+'\n'+b +'\n'+'Know More: '+short_url+'\n'
       my_list.append(n)
       serial = serial +1
       count = count + 1
+      url_a = url_a + 1
+      
   
-  Content1 = '#SDE, Associate Engineer, Full Time Remote OFF Campus #Jobs and #Internships Opportunities for the batch of 2023, 2022.! \n \n Please #like/comment/share/Tag Your friends to reach those who might be interested. \n \n Visit internfreak.co \n \n'
+  Content1 = '#SDE, Associate Engineer, Full Time Remote OFF Campus #Jobs and #Internships Opportunities for the batch of 2023, 2022 ! \n \nPlease #like/comment/share/Tag Your friends to reach those who might be interested. \n \n'
   
   Main ='\n'.join(my_list)
+  
   Content2 = "And much more! Only on internfreak.co \n \n Join the telegram channel for regular updates: https://bit.ly/31kyfMi (If the link doesn't work, look up InternFreak on the telegram app.) \n \n #letssupportfreshers #offcampus #Jobs4u #offcampusdrive #Internships #Jobsforfreshers #softwareengineer #fullstackdeveloper #freshershiring #hiring #recruitment #opportunities #internfreak #faang #dell #offcampus"
   
-  displaylinkedin = Content1 + Main + Content2 
+  displaylinkedin = Content1 + Main +"\n"+ Content2 
   bot.send_message(message.chat.id, displaylinkedin)
-
 
 @bot.message_handler(commands=['Toss_A_Coin'])
 def Toss_A_Coin(msg):
-#   print(msg)
   list1 = ["It's Tail","It's Head"]
   bot.send_message(msg.chat.id, random.choice(list1))
-
-
-
 
 bot.polling()
 
