@@ -208,9 +208,8 @@ def greet(message):
       end = len(lamba)-len(h1[count].getText())-6
       long_url='https://internfreak.co/'+lamba[9:end]
 
-    
-      my_secret2 = os.environ.get('BITLY_ACCESS_TOKEN')
-      bcc = bitly_api.Connection(access_token = my_secret2)
+  
+      bcc = bitly_api.Connection(access_token ='8b1ca9f2a88aa2d511bcb0ca88fb0ea7e2e3be0c')
 
     
       #bit.ly url shortener
