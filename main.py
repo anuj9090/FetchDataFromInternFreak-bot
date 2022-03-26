@@ -13,7 +13,7 @@ import re
 import bitly_api
 import json
 
-my_secret2 = os.environ['BITLY_ACCESS_TOKEN']
+my_secret2 = os.environ.get('BITLY_ACCESS_TOKEN')
 my_secret = os.environ.get('BotKey')
 bot = telebot.TeleBot(my_secret )
 space=" "
