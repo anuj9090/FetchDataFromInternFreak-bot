@@ -13,6 +13,7 @@ import re
 import bitly_api
 import json
 
+
 my_secret = os.environ.get('BotKey')
 bot = telebot.TeleBot(my_secret )
 space=" "
@@ -67,7 +68,7 @@ def greet1(message1):
   orgimg = Image.open("logoImg.png").convert("RGBA")
 
   img2=orgimg.resize((422, 159))
-
+  
   img = Image.open('./template.png')
 
 
@@ -141,9 +142,13 @@ def greet1(message1):
       I2.text((470, 780), locationName,font=myFont, fill=(47, 92, 130))
     if locationName_length==2:
       I2.text((550, 720), location,font=myFont, fill=(47, 92, 130))
-      I2.text((510, 780), locationName,font=myFont, fill=(47, 92, 130))       
+      I2.text((510, 780), locationName,font=myFont, fill=(47, 92, 130))   
+  
     if locationName_length==1:
-      I2.text((480, 720), location+space+locationName,font=myFont, fill=(47, 92, 130))
+      if len(locationName)<9:
+        I2.text((505, 720), location+space+locationName,font=myFont, fill=(47, 92, 130))  
+      else:
+       I2.text((480, 720), location+space+locationName,font=myFont, fill=(47, 92, 130))
    
   I3 = ImageDraw.Draw(img)  
 # Custom font style and font size
@@ -166,8 +171,8 @@ def greet1(message1):
   else:
     I3.text((530, 650), Batch[0].getText(), font=myFont, fill=(47, 92, 130))
 
-  # Add Text to an image
-  
+# masking logo of company  on the template
+    
   img.paste(img2, (0,200), mask = img2)
   # Save the edited image
 
