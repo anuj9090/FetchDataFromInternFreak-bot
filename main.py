@@ -45,7 +45,7 @@ def greet1(message1):
   res2 = requests.get(url)
   soup2 = bs4.BeautifulSoup(res2.text, 'lxml')
   designation = soup2.select('p')[1].getText()
-  location= "oppppp"
+  location= soup2.select('h5')[3].getText()
   locationName=soup2.select('p')[5].getText()
 
   ctc = soup2.select('h5')
