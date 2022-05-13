@@ -12,9 +12,13 @@ from PIL import ImageFont
 import re
 import bitly_api
 import json
+from removebg import RemoveBg
+
 
 
 my_secret = os.environ.get('BotKey')
+Removebg_Api = os.environ.get('Removebg_Api')
+
 bot = telebot.TeleBot(my_secret )
 space=" "
 
@@ -65,9 +69,22 @@ def greet1(message1):
 
   urllib.request.urlretrieve(image_url,"logoImg.png")
   
-  orgimg = Image.open("logoImg.png").convert("RGBA")
+  #removing bg
+  rmbg = RemoveBg(Removebg_Api, "error.log")
+  rmbg.remove_background_from_img_file("logoImg.png")
+  
+  #cropping the image
+  
+  im = Image.open(r"logoImg.png_no_bg.png")
+  cropped = im.crop((3,2,300,300))
+  cropped.save('croppedLogo.png')
+  
+  #coverting into RGBA Format
+  
+  orgimg = Image.open("croppedLogo.png").convert("RGBA")
+  
+  img2=orgimg.resize((500,500))
 
-  img2=orgimg.resize((422, 159))
   
   img = Image.open('./template.png')
 
@@ -171,12 +188,12 @@ def greet1(message1):
   else:
     I3.text((530, 650), Batch[0].getText(), font=myFont, fill=(47, 92, 130))
 
-# masking logo of company  on the template
+# masking logo of the company  on the template
     
-  img.paste(img2, (0,200), mask = img2)
+  img.paste(img2, (-60,150), mask = img2)
+  
   # Save the edited image
-
-
+  
   img.save("./car2.png")
 
   # files={'photo':open('./car2.png','rb')}
@@ -214,7 +231,7 @@ def greet(message):
       long_url='https://internfreak.co/'+lamba[9:end]
 
   
-      bcc = bitly_api.Connection(access_token ='8b1ca9f2a88aa2d511bcb0ca88fb0ea7e2e3be0c')
+      bcc = bitly_api.Connection(access_token ='Bitly_Api')
 
     
       #bit.ly url shortener

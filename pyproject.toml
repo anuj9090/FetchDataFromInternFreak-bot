@@ -13,6 +13,7 @@ requests = "^2.27.1"
 bitly_api = "^0.3"
 opencv-python = "^4.5.5"
 matplotlib = "^3.5.1"
+removebg = "^0.04"
 
 [tool.poetry.dev-dependencies]
 
