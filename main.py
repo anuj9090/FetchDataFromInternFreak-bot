@@ -18,6 +18,7 @@ from removebg import RemoveBg
 
 my_secret = os.environ.get('BotKey')
 Removebg_Api = os.environ.get('Removebg_Api')
+Bitly_Api = os.environ.get('Bitly_Api')
 
 bot = telebot.TeleBot(my_secret )
 space=" "
@@ -231,7 +232,7 @@ def greet(message):
       long_url='https://internfreak.co/'+lamba[9:end]
 
   
-      bcc = bitly_api.Connection(access_token ='Bitly_Api')
+      bcc = bitly_api.Connection(access_token =Bitly_Api)
 
     
       #bit.ly url shortener
