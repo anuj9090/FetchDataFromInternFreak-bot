@@ -2,7 +2,6 @@ import os
 import requests
 import bs4
 import telebot
-import random
 from time import sleep
 from telebot import types
 import urllib.request
@@ -30,7 +29,7 @@ def gree(msg):
   itembtn1 = types.KeyboardButton('/Show_latest_post')
   itembtn2 = types.KeyboardButton('/Show_recently_added_posts')
   itembtn4 = types.KeyboardButton('/start')
-  itembtn5 = types.KeyboardButton('/Toss_A_Coin')
+  itembtn5 = types.KeyboardButton('/Send_To_Channel')
 
   markup.add(itembtn1, itembtn2, itembtn4, itembtn5)
   bot.send_message(msg.chat.id, "Hi "+ msg.chat.first_name +"\nIt's the InternFreak bot and here's what I can do. 😀 ", reply_markup=markup)
@@ -56,6 +55,7 @@ def greet1(message1):
   ctc = soup2.select('h5')
   ctc_number = soup2.select('p')
   displaytelegram = h1[0].getText()+"\n"+"\n"+ Batch[0].getText()+ "\n"+ctc[2].getText() +" "+ctc_number[3].getText()+"\n"+"\n" +"Know More: "+ url
+  
   displaylinkdin  = h1[0].getText()+"\n"+ Batch[0].getText()+ "\n"+ctc[2].getText() +" "+ctc_number[3].getText()+"\n"+"\n" +"Know More: "+ url
   # -----------
   linkedinKaMaal ="\n"+"\n"+"Join The Telegram Channel To Get The Latest Updates: https://bit.ly/3FElTyx" + "\n"+"\n"+"Follow our page for more updates and do like/share the post to reach those who might be interested."+"\n"
@@ -202,7 +202,6 @@ def greet1(message1):
   # requests.post('https://api.telegram.org/bot1866658555:AAG4WdgzUVE3o0pwaE4r2JZEiY99i5Unul4/sendPhoto?chat_id=568861307',files=files)
     
   bot.send_photo(message1.chat.id, caption=displaytelegram,photo=open('./car2.png', 'rb'))
-  sleep(7)
   bot.send_message(message1.chat.id, displaylinkdin+linkedinKaMaal+hastags)
 
 @bot.message_handler(commands=['Show_recently_added_posts'])
@@ -258,11 +257,28 @@ def greet(message):
   displaylinkedin = Content1 + Main +"\n"+ Content2 
   bot.send_message(message.chat.id, displaylinkedin)
 
-@bot.message_handler(commands=['Toss_A_Coin'])
+@bot.message_handler(commands=['Send_To_Channel'])
 def Toss_A_Coin(msg):
-  list1 = ["It's Tail","It's Head"]
-  bot.send_message(msg.chat.id, random.choice(list1))
+  
+  res = requests.get('https://internfreak.co/jobs-and-internship-opportunities?page=1&limit=15')
+  soup = bs4.BeautifulSoup(res.text, 'lxml')
+  h1 = soup.select('.post-entry .heading a')
+  Batch = soup.select('p')
+ 
+  printop =soup.find_all('a')[6]
+  lamba = str(printop)
+  end = len(lamba)-len(h1[0].getText())-6
+  url='https://internfreak.co/'+lamba[9:end]
+  
+  res2 = requests.get(url)
+  soup2 = bs4.BeautifulSoup(res2.text, 'lxml')
 
+  ctc = soup2.select('h5')
+  ctc_number = soup2.select('p')
+  displaytelegram = h1[0].getText()+"\n"+"\n"+ Batch[0].getText()+ "\n"+ctc[2].getText() +" "+ctc_number[3].getText()+"\n"+"\n" +"Know More: "+ url
+  
+  bot.send_photo(-1001521790999, caption=displaytelegram,photo=open('./car2.png', 'rb'))
+  
 bot.polling()
 
 
