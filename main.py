@@ -2,7 +2,6 @@ import os
 import requests
 import bs4
 import telebot
-from time import sleep
 from telebot import types
 import urllib.request
 from PIL import Image
@@ -279,7 +278,7 @@ def Toss_A_Coin(msg):
   
   bot.send_photo(-1001521790999, caption=displaytelegram,photo=open('./car2.png', 'rb'))
   
-bot.polling()
+bot.infinity_polling(timeout=10, long_polling_timeout = 5)
 
 
 
