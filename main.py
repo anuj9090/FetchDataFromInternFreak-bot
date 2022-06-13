@@ -11,6 +11,8 @@ import re
 import bitly_api
 import json
 from removebg import RemoveBg
+import time
+
 
 
 
@@ -201,6 +203,7 @@ def greet1(message1):
   # requests.post('https://api.telegram.org/bot1866658555:AAG4WdgzUVE3o0pwaE4r2JZEiY99i5Unul4/sendPhoto?chat_id=568861307',files=files)
     
   bot.send_photo(message1.chat.id, caption=displaytelegram,photo=open('./car2.png', 'rb'))
+  time.sleep(3)
   bot.send_message(message1.chat.id, displaylinkdin+linkedinKaMaal+hastags)
 
 @bot.message_handler(commands=['Show_recently_added_posts'])
@@ -218,8 +221,8 @@ def greet(message):
   url_a = 2
   my_list = []
   
-  while (count < 8):   
-      a= str(serial) +". "+space+ h1[count].getText()
+  while (count < 10):   
+      a= str(serial) +". "+ h1[count].getText()
       b= Batch[count].getText()
       # c= Category[count].getText()
       d= 3*url_a
@@ -228,11 +231,8 @@ def greet(message):
       lamba = str(printop)
       end = len(lamba)-len(h1[count].getText())-6
       long_url='https://internfreak.co/'+lamba[9:end]
-
-  
       bcc = bitly_api.Connection(access_token =Bitly_Api)
 
-    
       #bit.ly url shortener
       response = bcc.shorten(long_url)
       s1 = json.dumps(response)
@@ -254,6 +254,8 @@ def greet(message):
   Content2 = "And much more! Only on internfreak.co \n \n Join the telegram channel for regular updates: https://bit.ly/31kyfMi (If the link doesn't work, look up InternFreak on the telegram app.) \n \n #letssupportfreshers #offcampus #Jobs4u #offcampusdrive #Internships #Jobsforfreshers #softwareengineer #fullstackdeveloper #freshershiring #hiring #recruitment #opportunities #internfreak #faang #dell #offcampus"
   
   displaylinkedin = Content1 + Main +"\n"+ Content2 
+  bot.send_message(message.chat.id, Main)
+  time.sleep(3)
   bot.send_message(message.chat.id, displaylinkedin)
 
 @bot.message_handler(commands=['Send_To_Channel'])
