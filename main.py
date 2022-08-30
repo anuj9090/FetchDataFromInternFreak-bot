@@ -65,9 +65,9 @@ def greet1(message1):
   urlImgSlice=str(soup.find_all('a')[5])
 
   if ' ' in locationName:
-    image_url = "http://3.108.247.213/uploads/"+  urlImgSlice[end+51:-8].replace(" ", "%20")
+    image_url = "http://3.111.223.247/uploads/"+  urlImgSlice[end+51:-8].replace(" ", "%20")
   else:
-    image_url = "http://3.108.247.213/uploads/"+  urlImgSlice[end+51:-8]
+    image_url = "http://3.111.223.247/uploads/"+  urlImgSlice[end+51:-8]
 
   urllib.request.urlretrieve(image_url,"logoImg.png")
   
