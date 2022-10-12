@@ -23,6 +23,12 @@ Bitly_Api = os.environ.get('Bitly_Api')
 bot = telebot.TeleBot(my_secret )
 space=" "
 
+
+@bot.message_handler(content_types=['new_chat_members'])
+def delete_join_message(m):   
+ bot.delete_message(m.chat.id,m.message_id)
+  
+
 @bot.message_handler(commands=['start'])
 def gree(msg):
 #   print(msg)
