@@ -65,7 +65,7 @@ def greet1(message1):
   
   displaylinkdin  = h1[0].getText()+"\n"+ Batch[0].getText()+ "\n"+ctc[2].getText() +" "+ctc_number[3].getText()+"\n"+"\n" +"Know More: "+ url
   # -----------
-  linkedinKaMaal ="\n"+"\n"+"Join The Telegram Channel To Get The Latest Updates: https://bit.ly/3FElTyx" + "\n"+"\n"+"Follow our page for more updates and do like/share the post to reach those who might be interested."+"\n"
+  linkedinKaMaal ="\n"+"\n"+"To receive the most recent updates, we invite you to join our Telegram channel by clicking on this link: https://bit.ly/3FElTyx." + "\n" + "\n" "Additionally, you can also become a part of our Whatsapp group by visiting this link: http://bit.ly/42z4Atw."+ "\n"+"\n"+"Follow our page for more updates and do like/share the post to reach those who might be interested."+"\n"
   hastags="\n"+"#like #recruiting #softwareengineer #careers #boeing #helpinghands #fresher #hiring #jobs #recruitment #jobsearch #internship #jobhunt2021 #intern2021 #job #internship #international #studygram #employment #engineering #engineer #jobs #vacancy #staysafe #instagood #intern #india #millennials #postoftheday #post #professional #technology #tech #students #poster #awareness #lifestyle #developer #softwaredeveloper #enterpreneur #sony #viralpost #viral #hustlers #acies #faang #amazon #google #facebook #netflix #apple #dxctechnology #texasinstruments #adobe #adobehiring #dropbox #googlehiring #amazingcompany #educational #tcs #facebookads #comment #highpayingjobs #amount"
   
   urlImgSlice=str(soup.find_all('a')[5])
