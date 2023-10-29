@@ -8,7 +8,6 @@ from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
 import re
-import bitly_api
 import json
 from removebg import RemoveBg
 import time
@@ -18,7 +17,6 @@ import time
 
 my_secret = os.environ.get('BotKey')
 Removebg_Api = os.environ.get('Removebg_Api')
-Bitly_Api = os.environ.get('Bitly_Api')
 
 bot = telebot.TeleBot(my_secret )
 space=" "
@@ -237,7 +235,7 @@ def greet(message):
       lamba = str(printop)
       end = len(lamba)-len(h1[count].getText())-6
       long_url='https://internfreak.co/'+lamba[9:end]
-      bcc = bitly_api.Connection(access_token =Bitly_Api)
+
 
       #bit.ly url shortener
       response = bcc.shorten(long_url)
