@@ -238,13 +238,13 @@ def greet(message):
 
 
       #bit.ly url shortener
-      response = bcc.shorten(long_url)
-      s1 = json.dumps(response)
-      y = json.loads(s1)
-      short_url = y["url"]
+      #response = bcc.shorten(long_url)
+      #s1 = json.dumps(response)
+      #y = json.loads(s1)
+      #short_url = y["url"]
 
        
-      n=a+'\n'+b +'\n'+'Know More: '+short_url+'\n'
+      n=a+'\n'+b +'\n'+'Know More: '+long_url+'\n'
       my_list.append(n)
       serial = serial +1
       count = count + 1
