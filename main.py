@@ -260,7 +260,7 @@ def greet(message):
   displaylinkedin = Content1 + Main +"\n"+ Content2 
   bot.send_message(message.chat.id, Main)
   time.sleep(3)
-  bot.send_message(message.chat.id, displaylinkedin, parse_mode='MarkdownV2')
+  bot.send_message(message.chat.id, displaylinkedin, { parseMode: 'Markdown' })
 
 @bot.message_handler(commands=['Send_To_Channel'])
 def Toss_A_Coin(msg):
