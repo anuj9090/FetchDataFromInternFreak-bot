@@ -37,7 +37,7 @@ def gree(msg):
   itembtn5 = types.KeyboardButton('/Send_To_Channel')
 
   markup.add(itembtn1, itembtn2, itembtn4, itembtn5)
-  bot.send_message(msg.chat.id, "Hi "+ msg.chat.first_name +"\nf"`{It's the InternFreak bot and here's what I can do. 😀 }`"", reply_markup=markup)
+  bot.send_message(msg.chat.id, "Hi "+ msg.chat.first_name +"\nIt's the InternFreak bot and here's what I can do. 😀", reply_markup=markup)
 
 @bot.message_handler(commands=['Show_latest_post'])
 def greet1(message1):
@@ -258,9 +258,9 @@ def greet(message):
   Content2 = "And much more! Only on internfreak.co \n \n Join the telegram channel for regular updates: https://bit.ly/3FElTyx \n \n #letssupportfreshers #offcampus #Jobs4u #offcampusdrive #Internships #Jobsforfreshers #softwareengineer #fullstackdeveloper #freshershiring #hiring #recruitment #opportunities #internfreak #faang #dell #offcampus"
   
   displaylinkedin = Content1 + Main +"\n"+ Content2 
-  bot.send_message(message.chat.id, Main)
+  bot.send_message(message.chat.id, f"`{text}`")
   time.sleep(3)
-  bot.send_message(message.chat.id, displaylinkedin)
+  bot.send_message(message.chat.id, f"`{text}`")
 
 @bot.message_handler(commands=['Send_To_Channel'])
 def Toss_A_Coin(msg):
