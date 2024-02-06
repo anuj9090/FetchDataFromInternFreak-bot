@@ -37,7 +37,7 @@ def gree(msg):
   itembtn5 = types.KeyboardButton('/Send_To_Channel')
 
   markup.add(itembtn1, itembtn2, itembtn4, itembtn5)
-  bot.send_message(msg.chat.id, "Hi "+ msg.chat.first_name +"\nIt's the InternFreak bot and here's what I can do. 😀 ", reply_markup=markup)
+  bot.send_message(msg.chat.id, "Hi "+ msg.chat.first_name +"\nf"`{It's the InternFreak bot and here's what I can do. 😀 }`"", reply_markup=markup)
 
 @bot.message_handler(commands=['Show_latest_post'])
 def greet1(message1):
