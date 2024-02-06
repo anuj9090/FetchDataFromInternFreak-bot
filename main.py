@@ -208,7 +208,7 @@ def greet1(message1):
     
   bot.send_photo(message1.chat.id, caption=displaytelegram,photo=open('./car2.png', 'rb'))
   time.sleep(3)
-  bot.send_message(message1.chat.id, displaylinkdin+linkedinKaMaal+hastags)
+  bot.send_message(message1.chat.id, displaylinkdin+linkedinKaMaal+hastags, parse_mode="MarkdownV2")
 
 @bot.message_handler(commands=['Show_recently_added_posts'])
 
@@ -258,9 +258,9 @@ def greet(message):
   Content2 = "And much more! Only on internfreak.co \n \n Join the telegram channel for regular updates: https://bit.ly/3FElTyx \n \n #letssupportfreshers #offcampus #Jobs4u #offcampusdrive #Internships #Jobsforfreshers #softwareengineer #fullstackdeveloper #freshershiring #hiring #recruitment #opportunities #internfreak #faang #dell #offcampus"
   
   displaylinkedin = Content1 + Main +"\n"+ Content2 
-  bot.send_message(message.chat.id, Main)
-  time.sleep(3)
-  bot.send_message(message.chat.id, "nxwndiwndinwnd diwhfbi bfwubfoiw bfiw fow fbwubef obwbfow fowfnwof wo wow", parse_mode="MarkdownV2")
+  # bot.send_message(message.chat.id, Main)
+  # time.sleep(3)
+  bot.send_message(message.chat.id, displaylinkedin, parse_mode="MarkdownV2")
 
 @bot.message_handler(commands=['Send_To_Channel'])
 def Toss_A_Coin(msg):
