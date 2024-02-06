@@ -258,8 +258,8 @@ def greet(message):
   Content2 = "And much more! Only on internfreak.co \n \n Join the telegram channel for regular updates: https://bit.ly/3FElTyx \n \n #letssupportfreshers #offcampus #Jobs4u #offcampusdrive #Internships #Jobsforfreshers #softwareengineer #fullstackdeveloper #freshershiring #hiring #recruitment #opportunities #internfreak #faang #dell #offcampus"
   
   displaylinkedin = Content1 + Main +"\n"+ Content2 
-  # bot.send_message(message.chat.id, Main)
-  # time.sleep(3)
+  bot.send_message(message.chat.id, Main)
+  time.sleep(3)
   bot.send_message(message.chat.id, displaylinkedin, parse_mode="MarkdownV2")
 
 @bot.message_handler(commands=['Send_To_Channel'])
