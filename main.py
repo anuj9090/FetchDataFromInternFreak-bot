@@ -208,7 +208,7 @@ def greet1(message1):
     
   bot.send_photo(message1.chat.id, caption=displaytelegram,photo=open('./car2.png', 'rb'))
   time.sleep(3)
-  bot.send_message(message1.chat.id, displaylinkdin+linkedinKaMaal+hastags, parse_mode="MarkdownV2")
+  bot.send_message(message1.chat.id, displaylinkdin+linkedinKaMaal+hastags)
 
 @bot.message_handler(commands=['Show_recently_added_posts'])
 
@@ -260,7 +260,7 @@ def greet(message):
   displaylinkedin = Content1 + Main +"\n"+ Content2 
   bot.send_message(message.chat.id, Main)
   time.sleep(3)
-  bot.send_message(message.chat.id, displaylinkedin, parse_mode="MarkdownV2")
+  bot.send_message(message.chat.id, displaylinkedin)
 
 @bot.message_handler(commands=['Send_To_Channel'])
 def Toss_A_Coin(msg):
